@@ -8,11 +8,15 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const socketHandler = require("./socket/socket");
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://your-frontend.vercel.app",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -43,5 +47,5 @@ server.on("error", (error) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log("Server running on port", PORT);
 });

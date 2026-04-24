@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+const API = import.meta.env.VITE_API_URL;
+
 export default function Login({ setUser }) {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState("");
@@ -21,9 +23,7 @@ export default function Login({ setUser }) {
       return;
     }
 
-    const url = isLogin
-      ? "http://localhost:5000/api/auth/login"
-      : "http://localhost:5000/api/auth/register";
+    const url = isLogin ? `${API}/api/auth/login` : `${API}/api/auth/register`;
 
     const payload = {
       email: cleanedEmail,

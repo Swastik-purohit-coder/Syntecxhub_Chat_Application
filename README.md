@@ -90,7 +90,7 @@ Chat Application/
 
 ## API Endpoints
 
-Base backend URL: `http://localhost:5000`
+Base backend URL: `VITE_API_URL`
 
 ### Auth
 

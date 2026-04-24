@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { socket } from "../socket";
 
+const API = import.meta.env.VITE_API_URL;
+
 const getMessageId = (value) => {
   if (!value) return "";
 
@@ -64,7 +66,7 @@ export default function Chat({ user, onLogout }) {
     setMessages([]);
 
     try {
-      const res = await axios.get(`http://localhost:5000/api/messages/${selectedRoom}`);
+      const res = await axios.get(`${API}/api/messages/${room}`);
       setMessages(res.data);
     } catch (err) {
       console.error("Error loading messages:", err);
